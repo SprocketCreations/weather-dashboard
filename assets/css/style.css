@@ -24,3 +24,7 @@ body {
 	margin: 0;
 	padding: .5em;
 }
+
+#cards > * {
+	margin: 0;
+}
