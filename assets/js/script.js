@@ -4,6 +4,9 @@ const SEARCH_FORM_SUBMIT = SEARCH_FORM.querySelector("#search-form-submit");
 
 const MAX_HISTORY_LENGTH = 10;
 
+const API = (latitude, longitude, count=6, key="0369d7a1c84205562665deb9dec64eea") => `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${key}&cnt=${count}`;
+const GEO_API = (city, limit=1, key="0369d7a1c84205562665deb9dec64eea") => `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=${limit}&appid=${key}`;
+
 const wipeHistory = () => {
 	localStorage.removeItem("history");
 };
@@ -54,4 +57,16 @@ SEARCH_FORM.addEventListener("submit", event => {
 
 	event.preventDefault();
 	SEARCH_FORM.reset();
+});
+
+const doFetch = (api, callback) => {
+	fetch(api).then(response => response.json()).then(callback);
+};
+
+doFetch(GEO_API("London"), json => {
+	console.log(json);
+	const city = json[0];
+	doFetch(API(city.lat, city.lon), json => {
+		console.log(json);
+	});
 });
