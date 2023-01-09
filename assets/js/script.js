@@ -5,7 +5,7 @@ const SEARCH_FORM_SUBMIT = SEARCH_FORM.querySelector("#search-form-submit");
 const MAX_HISTORY_LENGTH = 10;
 const WEATHER_CARDS = [];
 
-const API = (latitude, longitude, count = 6, key = "0369d7a1c84205562665deb9dec64eea") => `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${key}&cnt=${count}&units=imperial`;
+const API = (latitude, longitude, key = "0369d7a1c84205562665deb9dec64eea") => `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${key}&units=imperial`;
 const GEO_API = (city, limit = 1, key = "0369d7a1c84205562665deb9dec64eea") => `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=${limit}&appid=${key}`;
 
 function WeatherCard(header, temp_span, wind_span, humidity_span) {
@@ -96,7 +96,7 @@ const findCity = city => {
 
 const getWeather = (lat, lon, city) => {
 	doFetch(API(lat, lon), json => {
-		const weathers = json.list;
+		const weathers = filterWeatherData(json.list);
 
 		for (let i = 0; i < 6; ++i) {
 			const weather = weathers[i];
@@ -127,6 +127,26 @@ const linkCards = () => {
 		WEATHER_CARDS.push(new WeatherCard(header, spans[0], spans[1], spans[2]));
 	}
 };
+
+const filterWeatherData = weatherData => {
+	//console.log(weatherData);
+	const filteredWeatherData = [];
+	weatherData.forEach(data => {
+		const hour = dayjs.unix(data.dt).hour();
+		if(hour === 13) {
+			filteredWeatherData.push(data);
+		}
+	});
+	if(dayjs().hour() < 13) {
+		filteredWeatherData.push(weatherData[weatherData.length - 1]);
+	}
+	else {
+		filteredWeatherData.unshift(weatherData[0]);
+	}
+	console.log(filteredWeatherData);
+	return filteredWeatherData;
+};
+
 
 linkCards();
 generateHistoryButtons();
