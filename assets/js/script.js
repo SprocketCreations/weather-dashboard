@@ -7,7 +7,7 @@ const MAX_HISTORY_LENGTH = 10;
 const WEATHER_CARDS = [];
 
 const API = (latitude, longitude, key = "0369d7a1c84205562665deb9dec64eea") => `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${key}&units=imperial`;
-const GEO_API = (city, limit = 1, key = "0369d7a1c84205562665deb9dec64eea") => `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=${limit}&appid=${key}`;
+const GEO_API = (city, limit = 1, key = "0369d7a1c84205562665deb9dec64eea") => `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=${limit}&appid=${key}`;
 
 function WeatherCard(header, img, temp_span, wind_span, humidity_span) {
 	this.header = header;
