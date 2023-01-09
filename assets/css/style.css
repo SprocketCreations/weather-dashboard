@@ -28,3 +28,9 @@ body {
 #cards > * {
 	margin: 0;
 }
+
+.icon {
+	width: 32px;
+	padding: 0;
+	height : 32px;
+}
