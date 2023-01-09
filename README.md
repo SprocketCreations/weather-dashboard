@@ -4,7 +4,7 @@
 
 ## Description
 
-A Weather Dashboard that uses the api to display the next 5 days of weather for any given city.
+A Weather Dashboard that uses the 5 Day Weather API to display the next 5 days of weather for any given city.
 
 ## Installation
 
