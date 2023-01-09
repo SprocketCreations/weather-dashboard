@@ -105,7 +105,7 @@ const getWeather = (lat, lon, city) => {
 
 		for (let i = 0; i < 6; ++i) {
 			const weather = weathers[i];
-			const icon = `http://openweathermap.org/img/w/${weathers[i].weather[0].icon}.png`;
+			const icon = `https://openweathermap.org/img/w/${weathers[i].weather[0].icon}.png`;
 			const date = `${i === 0 ? `${city} (` : ""}${dayjs.unix(weather.dt).format("M/D/YYYY")}${i === 0 ? ")" : ""}`;
 			const temperature = `${weather.main.temp}*F`;
 			const wind = `${weather.wind.speed} MPH`;
@@ -148,7 +148,6 @@ const filterWeatherData = weatherData => {
 	else {
 		filteredWeatherData.unshift(weatherData[0]);
 	}
-	console.log(filteredWeatherData);
 	return filteredWeatherData;
 };
 
