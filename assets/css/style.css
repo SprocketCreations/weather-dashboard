@@ -20,7 +20,6 @@ body {
 
 .forcast-card {
 	flex: 1 1;
-
 	margin: 0;
 	padding: .5em;
 }
@@ -33,4 +32,22 @@ body {
 	width: 32px;
 	padding: 0;
 	height : 32px;
+}
+
+@media screen and (max-width: 1000px) {
+	.forcast-card {
+		flex-basis: 40%;
+	}
+}
+
+@media screen and (max-width: 640px) {
+	.forcast-card { 
+		flex-basis: 100%;
+	}
+	.responsive-column {
+		flex-direction: column;
+	}
+	#search-form {
+		width: 100%;
+	}
 }

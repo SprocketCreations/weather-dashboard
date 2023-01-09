@@ -14,10 +14,10 @@
 </head>
 <body>
 	<header class="banner row vw-100 justify-content-end">
-		<h1 class="text-light m-0 p-0 col-10 text-center fw-bold">Weather Dashboard</h1>
+		<h1 class="text-light m-0 p-0 col-12 col-sm-10 text-center fw-bold">Weather Dashboard</h1>
 	</header>
 	<main class="container-fluid mt-4">
-		<div class="row gap-3">
+		<div class="responsive-column row gap-3">
 			<form id="search-form" class="col-3 flex-column d-flex gap-3">
 				<h2 class="fw-bold">Search for a City:</h2>
 				<input required type="text" id="search-form-entry" placeholder="San Diego" class="form-control">
@@ -27,7 +27,7 @@
 			<div id="cards" class="invisible col d-flex gap-3 flex-nowrap flex-column">
 				<div class="row border">
 					<div>
-						<h3 class="fw-bold">Atlanta (9/13/2022)</h3>
+						<h3 class="d-inline fw-bold">Atlanta (9/13/2022)</h3>
 						<img src="" alt="" class="d-inline icon">
 					</div>
 					<p>Temp: <span>76.62*F</span></p>
@@ -35,7 +35,7 @@
 					<p>Humidity: <span>44%</span></p>
 				</div>
 				<h4 class="row m-0 fw-bold">5-Day Forecast:</h4>
-				<div class="row gap-3 flex-nowrap">
+				<div class="row gap-3">
 					<div class="forcast-card bg-dark text-light">
 						<h5 class="fw-bold">9/14/2022</h5>
 						<img src="" alt="" class="icon">
